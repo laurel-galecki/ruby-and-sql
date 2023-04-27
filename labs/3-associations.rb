@@ -17,6 +17,33 @@ Activity.destroy_all
 # 1. insert 3 rows in the activities table with relationships to
 # a single salesperson and 2 different contacts
 
+bob = Salesperson.find_by({"first_name"=>"Bob"})
+tim = Contact.find_by({"first_name"=>"Time"})
+
+activity1 = Activity.new
+activity1["notes"] = "golf outing"
+activity1["salesperson_id"] = bob["id"]
+activity1["contact_id"] = tim["id"]
+activity1.save
+
+puts activity1.inspect
+
+activity2 = Activity.new
+activity2["notes"] = "lunch meeting"
+activity2["salesperson_id"] = "X"
+activity2["contact_id"] = "X"
+activity2.save
+
+puts activity2.inspect
+
+activity3 = Activity.new
+activity3["notes"] = "team huddle"
+activity3["salesperson_id"] = "X"
+activity3["contact_id"] = "X"
+activity3.save
+
+puts activity3.inspect
+
 # 2. Display all the activities between the salesperson used above
 # and one of the contacts (sample output below):
 
